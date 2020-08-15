@@ -33,3 +33,21 @@
       
 
 # 2주차_주간업무보고
+
+1. chart_test 생성  
+* dynamic web project 로 chart_test 생성 
+  + barchart.html : d3.js example 에서 index.html 복사 및 수정 
+  + data.tsv : d3.js example 에서 data.tsv 복사 
+* Tomcat 을 사용해 서버 연결  
+
+2. 샘플 차트 테스트  
+* barchart.html 테스트 
+  + http://localhost:8080/chart_test/barchart.html 실행
+  + data.tsv 에서 일부 데이터 변경 후 테스트 -> 성공 
+
+3. 차트 데이터 가이드 작성
+* 데이터 요청 / 응답 / chart library 정보 / 차트 샘플 작성 
+
+4. 기타 
+* 1차 과제 피드백 
+  + 8월 14일
