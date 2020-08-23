@@ -54,3 +54,23 @@
   
 5. 질문 
   - localhost:8080 에선 최초 데이터 값으로만 화면 출력되고 localhost:8243 에선 변경된 데이터를 적용해 화면 출력됩니다. 어느 부분이 잘못된건지 궁금합니다!
+  
+
+
+
+  # 3주차_주간업무보고
+
+  1. RestController를 활용한 DataBinding
+  * pom.xml 에 Jackson 라이브러리 추가
+  * restController 파일 작성
+  * home.jsp 작성 및 수정
+  * common_resource.jsp / home.js / home.css / jquery-3.5.1.min.js 추가
+
+  2. home.jsp 문제 해결
+  * JSTL 문법 부분 주석 처리했지만 JSTL 라이브러리 필요하다는 오류
+    + JSTL 라이브러리 다운 후 추가 완료
+
+  3. 기타
+  * 2차 온라인 세션 ( spring )
+    + 일시 : 8월 19일, 20:00 ~ 22:00
+    + 참고 자료 (블로그) -> 과제 수행하며 공부
