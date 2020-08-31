@@ -73,7 +73,7 @@ d3.json(url, function(data) {
       .attr("fill", "#69b3a2")
       .attr("d", d3.arc()     // imagine your doing a part of a donut plot
           .innerRadius(innerRadius)
-          .outerRadius(function(d) { return y(d['Value']); })
+          .outerRadius(function(d) { return y(cnt); })
           .startAngle(function(d) { return x(quality); })
           .endAngle(function(d) { return x(quality) + x.bandwidth(); })
           .padAngle(0.01)
