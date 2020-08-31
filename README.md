@@ -101,4 +101,4 @@
   + js 파일 : quality와 cnt 저장하는 함수 선언 후 d3 pie chart 소스코드 응용
   + 출력 X -> js 파일 소스코드의 문제인 거 같은데 어떻게 고쳐야 하는지 잘 모르겠습니다!
 
-
+![차트화면](https://user-images.githubusercontent.com/40231379/91694566-b5c6ec80-eba7-11ea-9385-c08516989ee6.JPG)
