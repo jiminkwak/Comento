@@ -76,12 +76,12 @@ svg
   .enter()
   .append('path')
     .attr('d', arcGenerator)
-    .attr('fill', function(d){ return(color(label))) })
+    .attr('fill', function(d){ return(color(label)) })
     .attr("stroke", "black")
     .style("stroke-width", "2px")
     .style("opacity", 0.7)
 
-/ Now add the annotation. Use the centroid method to get the best coordinates
+// Now add the annotation. Use the centroid method to get the best coordinates
 svg
   .selectAll('mySlices')
   .data(data_ready)
