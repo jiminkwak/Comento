@@ -33,53 +33,65 @@ function load_qualitylist(){
             success:function(args){
 	
 	// set the dimensions and margins of the graph
-var margin = {top: 10, right: 10, bottom: 10, left: 10},
-    width = 460 - margin.left - margin.right,
-    height = 460 - margin.top - margin.bottom,
-    innerRadius = 80,
-    outerRadius = Math.min(width, height) / 2;   // the outerRadius goes from the middle of the SVG area to the border
+var width = 450
+    height = 450
+    margin = 40
 
-// append the svg object to the body of the page
+// The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+var radius = Math.min(width, height) / 2 - margin
+
+// append the svg object to the div called 'quality'
 var svg = d3.select("#quality")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width)
+    .attr("height", height)
   .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + ( height/2+100 )+ ")"); // Add 100 on Y translation, cause upper bars are longer
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+// 데이터 가져오기
 
-d3.json(url, function(data) {
-	
-	var quality = getname(args);
-	var cnt = getcnt(args);
-	
-	// X scale
-  var x = d3.scaleBand()
-      .range([0, 2 * Math.PI])    // X axis goes from 0 to 2pi = all around the circle. If I stop at 1Pi, it will be around a half circle
-      .align(0)                  // This does nothing ?
-      .domain( data.map(function(d) { return quality; }) ); // The domain of the X axis is the list of states.
+var label = getname(args);
+var value = getcnt(args);
 
-// Y scale
-  var y = d3.scaleRadial()
-      .range([innerRadius, outerRadius])   // Domain will be define later.
-      .domain([0, 1000]); // Domain of Y is from 0 to the max seen in the data
+// set the color scale
+var color = d3.scaleOrdinal()
+  .domain(label)
+  .range(d3.schemeSet2);
 
- // Add bars
-  svg.append("g")
-    .selectAll("path")
-    .data(data)
-    .enter()
-    .append("path")
-      .attr("fill", "#69b3a2")
-      .attr("d", d3.arc()     // imagine your doing a part of a donut plot
-          .innerRadius(innerRadius)
-          .outerRadius(function(d) { return y(cnt); })
-          .startAngle(function(d) { return x(quality); })
-          .endAngle(function(d) { return x(quality) + x.bandwidth(); })
-          .padAngle(0.01)
-          .padRadius(innerRadius))
+// Compute the position of each group on the pie:
+var pie = d3.pie()
+  .value(function(d) {return value; })
+var data_ready = pie(d3.entries(value))
+// Now I know that group A goes from 0 degrees to x degrees and so on.
 
-});
+// shape helper to build arcs:
+var arcGenerator = d3.arc()
+  .innerRadius(0)
+  .outerRadius(radius)
+
+// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+svg
+  .selectAll('mySlices')
+  .data(data_ready)
+  .enter()
+  .append('path')
+    .attr('d', arcGenerator)
+    .attr('fill', function(d){ return(color(label))) })
+    .attr("stroke", "black")
+    .style("stroke-width", "2px")
+    .style("opacity", 0.7)
+
+/ Now add the annotation. Use the centroid method to get the best coordinates
+svg
+  .selectAll('mySlices')
+  .data(data_ready)
+  .enter()
+  .append('text')
+  .text(function(d){ return label})
+  .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+  .style("text-anchor", "middle")
+  .style("font-size", 17)
+
 
         },
         beforeSend: function () {

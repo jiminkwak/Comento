@@ -59,7 +59,8 @@
     <div id = fixed_vol ></div>
      
     <h3 style="margin-top:70; margin-bottom:50">4) Quality (Circular barplot)</h3>
-    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/quality.js"></script>
+    <div id = quality ></div>
     
     
     
