@@ -97,8 +97,8 @@
 
 4. 질문
 * Quality (Pie chart)
-  + 1) sql문 작성 : quality, count(quality) as cnt 추출
-  + 2) js 파일 : quality와 cnt 저장하는 함수 선언 후 d3 pie chart 소스코드 응용
+  + sql문 작성 : quality, count(quality) as cnt 추출
+  + js 파일 : quality와 cnt 저장하는 함수 선언 후 d3 pie chart 소스코드 응용
   + 출력 X -> js 파일 소스코드의 문제인 거 같은데 어떻게 고쳐야 하는지 잘 모르겠습니다!
 
 
