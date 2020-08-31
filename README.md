@@ -74,3 +74,30 @@
   * 2차 온라인 세션 ( spring )
     + 일시 : 8월 19일, 20:00 ~ 22:00
     + 참고 자료 (블로그) -> 과제 수행하며 공부
+    
+    
+    # 4주차_주간업무보고
+
+    1. wine quality.csv 파일 mysql Insert
+    * product_seq 추가 후 wine_quality 스키마 / product_quality 테이블 생성
+
+    2. Wine Quality Chart 계획
+    * 전체 데이터 평균값 테이블 (Wine-Quality Average) -> 성공
+    * Free Sulfur Dioxide & Total Sulfur Dioxide 상관관계 (Scatterplot) ->성공
+    * Fixed Acidity & Volatile Acidity 상관관계 (Heatmap) -> 성공
+    * Quality (Pie chart) -> 실패 & 질문
+
+    3. Wine Quality Chart 구현
+    * DAO / Service / VO 패키지 구현
+      + VO : WineVO, QualityVO, FreeTotalVO, FixedVolVO, AvgVO
+    * test.xml 구현
+    * js 파일 구현
+      + quality.js / fixed_vol.js / free_total.js / quality.js (실패)
+    * css / jsp 파일 구현
+
+    4. 질문
+    * Quality (Pie chart)
+      + 1) sql문 작성 : quality, count(quality) as cnt 추출
+      + 2) js 파일 : quality와 cnt 저장하는 함수 선언 후 d3 pie chart 소스코드 응용
+      + 출력 X -> js 파일 소스코드의 문제인 거 같은데 어떻게 고쳐야 하는지 잘 모르겠습니다!
+
